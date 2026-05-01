@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Get €25 credit on GoCar.ie! Use my referral code when signing up for Ireland's best car sharing service. Save money on your first trip in Dublin, Cork, Galway & more.">
+    <meta name="keywords" content="gocar referral code, gocar.ie discount, gocar promo code, gocar ireland referral, gocar sign up discount, car sharing dublin">
+    <title>GoCar.ie Referral Code – Get €25 Credit | Save on Your First Trip</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- New font for perfect l / 1 distinction -->
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;display=swap');
+        body { font-family: 'Inter', system-ui, sans-serif; }
+        
+        /* Updated code font - only for the referral code */
+        .code-font {
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            letter-spacing: 0.15em; /* extra spacing so l and 1 are clearly separate */
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-emerald-50 to-white min-h-screen">
+    <div class="max-w-2xl mx-auto px-4 py-12">
+        
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <div class="inline-flex items-center gap-2 bg-white shadow-sm border border-emerald-200 rounded-2xl px-5 py-2 mb-6">
+                <i class="fa-solid fa-car text-emerald-600"></i>
+                <span class="font-semibold text-emerald-700">GoCar.ie</span>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-semibold text-gray-900">Get <span class="text-emerald-600">€25 credit</span> on your first trip</h1>
+            <p class="mt-4 text-lg text-gray-600">Use my GoCar referral code below and both of us get €25 credit once you complete your first trip</p>
+        </div>
+
+        <!-- Big Referral Code Card -->
+        <div class="bg-white rounded-3xl shadow-2xl border border-gray-100 p-8 md:p-12 text-center mb-8">
+            <p class="text-emerald-600 font-medium tracking-widest text-sm uppercase mb-4">My Referral Code</p>
+            
+            <div class="flex items-center justify-center gap-6 flex-wrap">
+                <div id="code" class="code-font text-6xl md:text-7xl font-bold text-gray-800 tracking-widest select-all">
+                    l19g03
+                </div>
+                
+                <button onclick="copyCode()" 
+                        class="flex items-center justify-center gap-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-8 py-4 rounded-2xl text-lg transition-all active:scale-95">
+                    <i class="fa-solid fa-copy"></i>
+                    <span id="button-text">Copy code</span>
+                </button>
+            </div>
+
+            <p id="feedback" class="mt-6 text-emerald-600 font-medium hidden flex items-center justify-center gap-2">
+                <i class="fa-solid fa-check-circle"></i> Copied to clipboard!
+            </p>
+        </div>
+
+        <!-- How to use -->
+        <div class="bg-white rounded-3xl p-8 border">
+            <h2 class="font-semibold text-xl mb-6 flex items-center gap-3">
+                <i class="fa-solid fa-circle-info text-emerald-600"></i>
+                How to redeem your €25 credit
+            </h2>
+            <ol class="space-y-6">
+                <li class="flex gap-4"><span class="font-mono bg-emerald-100 text-emerald-700 w-8 h-8 rounded-2xl flex items-center justify-center font-bold flex-shrink-0">1</span> Tap the copy button above</li>
+                <li class="flex gap-4"><span class="font-mono bg-emerald-100 text-emerald-700 w-8 h-8 rounded-2xl flex items-center justify-center font-bold flex-shrink-0">2</span> Go to <a href="https://my.gocar.ie/signup.php" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">GoCar signup page</a></li>
+                <li class="flex gap-4"><span class="font-mono bg-emerald-100 text-emerald-700 w-8 h-8 rounded-2xl flex items-center justify-center font-bold flex-shrink-0">3</span> Paste the code during registration</li>
+                <li class="flex gap-4"><span class="font-mono bg-emerald-100 text-emerald-700 w-8 h-8 rounded-2xl flex items-center justify-center font-bold flex-shrink-0">4</span> Complete your first trip and enjoy €25 credit!</li>
+            </ol>
+        </div>
+
+        <div class="text-center text-xs text-gray-400 mt-10">
+            Valid for new GoCar customers only • Ireland car sharing • Dublin • Cork • Galway &amp; more
+        </div>
+    </div>
+
+    <script>
+        function copyCode() {
+            const codeElement = document.getElementById('code');
+            const codeText = codeElement.textContent.trim();
+            const buttonText = document.getElementById('button-text');
+            const feedback = document.getElementById('feedback');
+
+            navigator.clipboard.writeText(codeText).then(() => {
+                const originalText = buttonText.innerHTML;
+                buttonText.innerHTML = `<i class="fa-solid fa-check"></i> Copied!`;
+                feedback.classList.remove('hidden');
+
+                setTimeout(() => {
+                    buttonText.innerHTML = originalText;
+                    feedback.classList.add('hidden');
+                }, 2500);
+            });
+        }
+
+        // Tailwind config
+        tailwind.config = { content: [] };
+    </script>
+</body>
+</html>
