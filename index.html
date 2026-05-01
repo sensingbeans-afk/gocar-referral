@@ -4,14 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- CACHE CONTROL META TAGS -->
+    <!-- CACHE CONTROL -->
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     
-    <meta name="description" content="Get €25 credit on GoCar.ie! Use my referral code when signing up for Ireland's best car sharing service. Save money on your first trip in Dublin, Cork, Galway & more.">
-    <meta name="keywords" content="gocar referral code, gocar.ie discount, gocar promo code, gocar ireland referral, gocar sign up discount, car sharing dublin">
-    <title>GoCar.ie Referral Code – Get €25 Credit | Save on Your First Trip</title>
+    <title>GoCar.ie Referral Code – Get €25 Credit</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -25,24 +23,41 @@
             font-family: 'JetBrains Mono', 'Courier New', monospace;
             letter-spacing: 0.15em;
         }
+        
+        .lang-btn {
+            transition: all 0.2s;
+        }
+        .lang-btn.active {
+            background-color: #10b981;
+            color: white;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.3);
+        }
+        
+        /* Makes the language switcher scroll nicely on small screens */
+        #language-switcher {
+            scrollbar-width: thin;
+        }
     </style>
 </head>
 <body class="bg-gradient-to-br from-emerald-50 to-white min-h-screen">
-    <div class="max-w-2xl mx-auto px-4 py-12">
+    <div class="max-w-2xl mx-auto px-4 py-8">
         
+        <!-- Language Switcher -->
+        <div class="flex flex-wrap gap-2 justify-center mb-8 overflow-x-auto pb-2" id="language-switcher"></div>
+
         <!-- Header -->
         <div class="text-center mb-8">
             <div class="inline-flex items-center gap-2 bg-white shadow-sm border border-emerald-200 rounded-2xl px-5 py-2 mb-6">
                 <i class="fa-solid fa-car text-emerald-600"></i>
                 <span class="font-semibold text-emerald-700">GoCar.ie</span>
             </div>
-            <h1 class="text-4xl md:text-5xl font-semibold text-gray-900">Get <span class="text-emerald-600">€25 credit</span> on your first trip</h1>
-            <p class="mt-4 text-lg text-gray-600">Use my GoCar referral code below and both of us get €25 credit once you complete your first trip</p>
+            <h1 id="header" class="text-4xl md:text-5xl font-semibold text-gray-900"></h1>
+            <p id="subtitle" class="mt-4 text-lg text-gray-600"></p>
         </div>
 
         <!-- Big Referral Code Card -->
         <div class="bg-white rounded-3xl shadow-2xl border border-gray-100 p-8 md:p-12 text-center mb-8">
-            <p class="text-emerald-600 font-medium tracking-widest text-sm uppercase mb-4">My Referral Code</p>
+            <p id="referral-label" class="text-emerald-600 font-medium tracking-widest text-sm uppercase mb-4"></p>
             
             <div class="flex items-center justify-center gap-6 flex-wrap">
                 <div id="code" class="code-font text-6xl md:text-7xl font-bold text-gray-800 tracking-widest select-all">
@@ -52,35 +67,402 @@
                 <button onclick="copyCode()" 
                         class="flex items-center justify-center gap-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-8 py-4 rounded-2xl text-lg transition-all active:scale-95">
                     <i class="fa-solid fa-copy"></i>
-                    <span id="button-text">Copy code</span>
+                    <span id="button-text"></span>
                 </button>
             </div>
 
             <p id="feedback" class="mt-6 text-emerald-600 font-medium hidden flex items-center justify-center gap-2">
-                <i class="fa-solid fa-check-circle"></i> Copied to clipboard!
+                <i class="fa-solid fa-check-circle"></i> <span id="copied-text"></span>
             </p>
         </div>
 
         <!-- How to use -->
         <div class="bg-white rounded-3xl p-8 border">
-            <h2 class="font-semibold text-xl mb-6 flex items-center gap-3">
+            <h2 id="howto-title" class="font-semibold text-xl mb-6 flex items-center gap-3">
                 <i class="fa-solid fa-circle-info text-emerald-600"></i>
-                How to redeem your €25 credit
             </h2>
-            <ol class="space-y-6">
-                <li class="flex gap-4"><span class="font-mono bg-emerald-100 text-emerald-700 w-8 h-8 rounded-2xl flex items-center justify-center font-bold flex-shrink-0">1</span> Tap the copy button above</li>
-                <li class="flex gap-4"><span class="font-mono bg-emerald-100 text-emerald-700 w-8 h-8 rounded-2xl flex items-center justify-center font-bold flex-shrink-0">2</span> Go to <a href="https://my.gocar.ie/signup.php" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">GoCar signup page</a></li>
-                <li class="flex gap-4"><span class="font-mono bg-emerald-100 text-emerald-700 w-8 h-8 rounded-2xl flex items-center justify-center font-bold flex-shrink-0">3</span> Paste the code during registration</li>
-                <li class="flex gap-4"><span class="font-mono bg-emerald-100 text-emerald-700 w-8 h-8 rounded-2xl flex items-center justify-center font-bold flex-shrink-0">4</span> Complete your first trip and enjoy €25 credit!</li>
-            </ol>
+            <ol id="steps" class="space-y-6"></ol>
         </div>
 
-        <div class="text-center text-xs text-gray-400 mt-10">
-            Valid for new GoCar customers only • Ireland car sharing • Dublin • Cork • Galway &amp; more
-        </div>
+        <div id="footer" class="text-center text-xs text-gray-400 mt-10"></div>
     </div>
 
     <script>
+        // === ALL 21 TRANSLATIONS ===
+        const translations = {
+            en: {
+                title: "GoCar.ie Referral Code – Get €25 Credit | Save on Your First Trip",
+                header: `Get <span class="text-emerald-600">€25 credit</span> on your first trip`,
+                subtitle: "Use my GoCar referral code below and both of us get €25 credit once you complete your first trip",
+                referralLabel: "My Referral Code",
+                buttonText: "Copy code",
+                copiedText: "Copied to clipboard!",
+                howtoTitle: "How to redeem your €25 credit",
+                steps: [
+                    "Tap the copy button above",
+                    `Go to <a href="https://my.gocar.ie/signup.php" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">GoCar signup page</a>`,
+                    "Paste the code during registration",
+                    "Complete your first trip and enjoy €25 credit!"
+                ],
+                footer: "Valid for new GoCar customers only • Ireland car sharing • Dublin • Cork • Galway & more"
+            },
+            fr: {
+                title: "Code de parrainage GoCar.ie – Obtenez 25 € de crédit",
+                header: `Obtenez <span class="text-emerald-600">25 € de crédit</span> sur votre premier trajet`,
+                subtitle: "Utilisez mon code de parrainage GoCar ci-dessous et nous recevrons tous les deux 25 € de crédit une fois votre premier trajet terminé",
+                referralLabel: "Mon code de parrainage",
+                buttonText: "Copier le code",
+                copiedText: "Copié dans le presse-papiers !",
+                howtoTitle: "Comment utiliser votre crédit de 25 €",
+                steps: [
+                    "Appuyez sur le bouton copier ci-dessus",
+                    `Allez sur la <a href="https://my.gocar.ie/signup.php" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">page d'inscription GoCar</a>`,
+                    "Collez le code lors de l'inscription",
+                    "Effectuez votre premier trajet et profitez de 25 € de crédit !"
+                ],
+                footer: "Valable pour les nouveaux clients GoCar uniquement • Partage de voiture en Irlande • Dublin • Cork • Galway et plus"
+            },
+            de: {
+                title: "GoCar.ie Empfehlungscode – 25 € Guthaben erhalten",
+                header: `Erhalten Sie <span class="text-emerald-600">25 € Guthaben</span> auf Ihre erste Fahrt`,
+                subtitle: "Verwenden Sie meinen GoCar-Empfehlungscode unten und wir erhalten beide 25 € Guthaben, sobald Sie Ihre erste Fahrt abgeschlossen haben",
+                referralLabel: "Mein Empfehlungscode",
+                buttonText: "Code kopieren",
+                copiedText: "In die Zwischenablage kopiert!",
+                howtoTitle: "So lösen Sie Ihr 25 € Guthaben ein",
+                steps: [
+                    "Tippen Sie auf den Kopieren-Button oben",
+                    `Gehen Sie zur <a href="https://my.gocar.ie/signup.php" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">GoCar-Anmeldeseite</a>`,
+                    "Fügen Sie den Code bei der Registrierung ein",
+                    "Schließen Sie Ihre erste Fahrt ab und genießen Sie 25 € Guthaben!"
+                ],
+                footer: "Nur für neue GoCar-Kunden • Autoteilen in Irland • Dublin • Cork • Galway & mehr"
+            },
+            es: {
+                title: "Código de referencia GoCar.ie – Obtén 25 € de crédito",
+                header: `Obtén <span class="text-emerald-600">25 € de crédito</span> en tu primer viaje`,
+                subtitle: "Usa mi código de referencia de GoCar a continuación y ambos obtenemos 25 € de crédito una vez completes tu primer viaje",
+                referralLabel: "Mi código de referencia",
+                buttonText: "Copiar código",
+                copiedText: "¡Copiado al portapapeles!",
+                howtoTitle: "Cómo canjear tu crédito de 25 €",
+                steps: [
+                    "Pulsa el botón de copiar arriba",
+                    `Ve a la <a href="https://my.gocar.ie/signup.php" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">página de registro de GoCar</a>`,
+                    "Pega el código durante el registro",
+                    "Completa tu primer viaje y disfruta de 25 € de crédito!"
+                ],
+                footer: "Válido solo para nuevos clientes de GoCar • Car sharing en Irlanda • Dublín • Cork • Galway y más"
+            },
+            nl: {
+                title: "GoCar.ie Referral Code – Krijg €25 tegoed",
+                header: `Krijg <span class="text-emerald-600">€25 tegoed</span> op je eerste rit`,
+                subtitle: "Gebruik mijn GoCar referral code hieronder en wij krijgen allebei €25 tegoed zodra je je eerste rit hebt voltooid",
+                referralLabel: "Mijn referral code",
+                buttonText: "Code kopiëren",
+                copiedText: "Gekopieerd naar klembord!",
+                howtoTitle: "Hoe je €25 tegoed kunt inwisselen",
+                steps: [
+                    "Tik op de kopieerknop hierboven",
+                    `Ga naar de <a href="https://my.gocar.ie/signup.php" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">GoCar aanmeldingspagina</a>`,
+                    "Plak de code bij de registratie",
+                    "Maak je eerste rit af en geniet van €25 tegoed!"
+                ],
+                footer: "Alleen voor nieuwe GoCar-klanten • Autodelen in Ierland • Dublin • Cork • Galway & meer"
+            },
+            it: {
+                title: "Codice referral GoCar.ie – Ottieni €25 di credito",
+                header: `Ottieni <span class="text-emerald-600">€25 di credito</span> sul tuo primo viaggio`,
+                subtitle: "Usa il mio codice referral GoCar qui sotto e entrambi riceviamo €25 di credito una volta completato il tuo primo viaggio",
+                referralLabel: "Il mio codice referral",
+                buttonText: "Copia codice",
+                copiedText: "Copiato negli appunti!",
+                howtoTitle: "Come riscattare il tuo credito di €25",
+                steps: [
+                    "Tocca il pulsante copia sopra",
+                    `Vai alla <a href="https://my.gocar.ie/signup.php" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">pagina di registrazione GoCar</a>`,
+                    "Incolla il codice durante la registrazione",
+                    "Completa il tuo primo viaggio e goditi €25 di credito!"
+                ],
+                footer: "Valido solo per nuovi clienti GoCar • Car sharing in Irlanda • Dublino • Cork • Galway e altri"
+            },
+            pl: {
+                title: "Kod polecający GoCar.ie – Otrzymaj 25 € kredytu",
+                header: `Otrzymaj <span class="text-emerald-600">25 € kredytu</span> na swoją pierwszą podróż`,
+                subtitle: "Użyj mojego kodu polecającego GoCar poniżej, a oboje dostaniemy 25 € kredytu po ukończeniu pierwszej podróży",
+                referralLabel: "Mój kod polecający",
+                buttonText: "Skopiuj kod",
+                copiedText: "Skopiowano do schowka!",
+                howtoTitle: "Jak odebrać swój kredyt 25 €",
+                steps: [
+                    "Kliknij przycisk kopiuj powyżej",
+                    `Przejdź do <a href="https://my.gocar.ie/signup.php" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">strony rejestracji GoCar</a>`,
+                    "Wklej kod podczas rejestracji",
+                    "Ukończ swoją pierwszą podróż i ciesz się kredytem 25 €!"
+                ],
+                footer: "Tylko dla nowych klientów GoCar • Car sharing w Irlandii • Dublin • Cork • Galway i więcej"
+            },
+            pt: {
+                title: "Código de referral GoCar.ie – Obtenha €25 de crédito",
+                header: `Obtenha <span class="text-emerald-600">€25 de crédito</span> na sua primeira viagem`,
+                subtitle: "Use o meu código de referral GoCar abaixo e ambos recebemos €25 de crédito assim que concluir a sua primeira viagem",
+                referralLabel: "O meu código de referral",
+                buttonText: "Copiar código",
+                copiedText: "Copiado para a área de transferência!",
+                howtoTitle: "Como resgatar o seu crédito de €25",
+                steps: [
+                    "Toque no botão de copiar acima",
+                    `Vá para a <a href="https://my.gocar.ie/signup.php" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">página de inscrição GoCar</a>`,
+                    "Cole o código durante o registo",
+                    "Complete a sua primeira viagem e aproveite €25 de crédito!"
+                ],
+                footer: "Válido apenas para novos clientes GoCar • Partilha de carro na Irlanda • Dublin • Cork • Galway e mais"
+            },
+            
+            // NEW LANGUAGES
+            ru: {
+                title: "Реферальный код GoCar.ie – Получите 25 € кредита",
+                header: `Получите <span class="text-emerald-600">25 € кредита</span> на вашу первую поездку`,
+                subtitle: "Используйте мой реферальный код GoCar ниже, и мы оба получим 25 € кредита после завершения вашей первой поездки",
+                referralLabel: "Мой реферальный код",
+                buttonText: "Копировать код",
+                copiedText: "Скопировано в буфер обмена!",
+                howtoTitle: "Как активировать кредит 25 €",
+                steps: [
+                    "Нажмите кнопку копирования выше",
+                    `Перейдите на <a href="https://my.gocar.ie/signup.php" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">страницу регистрации GoCar</a>`,
+                    "Вставьте код при регистрации",
+                    "Завершите первую поездку и получите 25 € кредита!"
+                ],
+                footer: "Только для новых клиентов GoCar • Каршеринг в Ирландии • Дублин • Корк • Голуэй и другие города"
+            },
+            ro: {
+                title: "Cod de recomandare GoCar.ie – Obțineți 25 € credit",
+                header: `Obțineți <span class="text-emerald-600">25 € credit</span> la prima dvs. călătorie`,
+                subtitle: "Folosiți codul meu de recomandare GoCar mai jos și amândoi primim 25 € credit după ce finalizați prima călătorie",
+                referralLabel: "Codul meu de recomandare",
+                buttonText: "Copiază codul",
+                copiedText: "Copiat în clipboard!",
+                howtoTitle: "Cum să răscumpărați creditul de 25 €",
+                steps: [
+                    "Apăsați butonul de copiere de mai sus",
+                    `Accesați <a href="https://my.gocar.ie/signup.php" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">pagina de înscriere GoCar</a>`,
+                    "Lipiti codul în timpul înregistrării",
+                    "Finalizați prima călătorie și bucurați-vă de 25 € credit!"
+                ],
+                footer: "Valabil doar pentru clienții noi GoCar • Car sharing în Irlanda • Dublin • Cork • Galway & mai mult"
+            },
+            uk: {
+                title: "Реферальний код GoCar.ie – Отримайте 25 € кредиту",
+                header: `Отримайте <span class="text-emerald-600">25 € кредиту</span> на вашу першу поїздку`,
+                subtitle: "Використовуйте мій реферальний код GoCar нижче, і ми обидва отримаємо 25 € кредиту після завершення вашої першої поїздки",
+                referralLabel: "Мій реферальний код",
+                buttonText: "Скопіювати код",
+                copiedText: "Скопійовано в буфер обміну!",
+                howtoTitle: "Як активувати кредит 25 €",
+                steps: [
+                    "Натисніть кнопку копіювання вище",
+                    `Перейдіть на <a href="https://my.gocar.ie/signup.php" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">сторінку реєстрації GoCar</a>`,
+                    "Вставте код під час реєстрації",
+                    "Завершіть першу поїздку та отримайте 25 € кредиту!"
+                ],
+                footer: "Тільки для нових клієнтів GoCar • Каршерінг в Ірландії • Дублін • Корк • Голуей та інші"
+            },
+            sv: {
+                title: "GoCar.ie Referralkod – Få 25 € kredit",
+                header: `Få <span class="text-emerald-600">25 € kredit</span> på din första resa`,
+                subtitle: "Använd min GoCar-referralkod nedan så får vi båda 25 € kredit när du slutför din första resa",
+                referralLabel: "Min referralkod",
+                buttonText: "Kopiera kod",
+                copiedText: "Kopierad till urklipp!",
+                howtoTitle: "Hur du löser in din 25 € kredit",
+                steps: [
+                    "Tryck på kopieraknappen ovan",
+                    `Gå till <a href="https://my.gocar.ie/signup.php" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">GoCar-registreringssidan</a>`,
+                    "Klistra in koden vid registrering",
+                    "Slutför din första resa och njut av 25 € kredit!"
+                ],
+                footer: "Gäller endast nya GoCar-kunder • Bil delning i Irland • Dublin • Cork • Galway & fler"
+            },
+            el: {
+                title: "Κωδικός παραπομπής GoCar.ie – Λάβετε 25 € πίστωση",
+                header: `Λάβετε <span class="text-emerald-600">25 € πίστωση</span> στο πρώτο σας ταξίδι`,
+                subtitle: "Χρησιμοποιήστε τον κωδικό παραπομπής GoCar μου παρακάτω και και οι δύο θα λάβουμε 25 € πίστωση μόλις ολοκληρώσετε το πρώτο σας ταξίδι",
+                referralLabel: "Ο κωδικός παραπομπής μου",
+                buttonText: "Αντιγραφή κωδικού",
+                copiedText: "Αντιγράφηκε στο πρόχειρο!",
+                howtoTitle: "Πώς να εξαργυρώσετε την πίστωση 25 €",
+                steps: [
+                    "Πατήστε το κουμπί αντιγραφής παραπάνω",
+                    `Μεταβείτε στη <a href="https://my.gocar.ie/signup.php" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">σελίδα εγγραφής GoCar</a>`,
+                    "Επικολλήστε τον κωδικό κατά την εγγραφή",
+                    "Ολοκληρώστε το πρώτο σας ταξίδι και απολαύστε 25 € πίστωση!"
+                ],
+                footer: "Ισχύει μόνο για νέους πελάτες GoCar • Car sharing στην Ιρλανδία • Δουβλίνο • Κορκ • Γκολγουέι & περισσότερα"
+            },
+            cs: {
+                title: "Referenční kód GoCar.ie – Získejte 25 € kredit",
+                header: `Získejte <span class="text-emerald-600">25 € kredit</span> na vaši první cestu`,
+                subtitle: "Použijte můj referenční kód GoCar níže a oba dostaneme 25 € kredit po dokončení vaší první cesty",
+                referralLabel: "Můj referenční kód",
+                buttonText: "Kopírovat kód",
+                copiedText: "Zkopírováno do schránky!",
+                howtoTitle: "Jak uplatnit váš kredit 25 €",
+                steps: [
+                    "Klepněte na tlačítko kopírovat výše",
+                    `Přejděte na <a href="https://my.gocar.ie/signup.php" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">registrační stránku GoCar</a>`,
+                    "Vložte kód při registraci",
+                    "Dokončete první cestu a užijte si 25 € kredit!"
+                ],
+                footer: "Platí pouze pro nové zákazníky GoCar • Sdílení aut v Irsku • Dublin • Cork • Galway a další"
+            },
+            hu: {
+                title: "GoCar.ie Ajánlókód – Szerezzen 25 € kreditet",
+                header: `Szerezzen <span class="text-emerald-600">25 € kreditet</span> az első útjára`,
+                subtitle: "Használja az én GoCar ajánlókódomat lent, és mindketten kapunk 25 € kreditet, miután befejezte az első utat",
+                referralLabel: "Az én ajánlókódom",
+                buttonText: "Kód másolása",
+                copiedText: "Másolva a vágólapra!",
+                howtoTitle: "Hogyan váltsa be a 25 € kreditjét",
+                steps: [
+                    "Koppintson a másolás gombra fent",
+                    `Menjen a <a href="https://my.gocar.ie/signup.php" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">GoCar regisztrációs oldalára</a>`,
+                    "Illessze be a kódot a regisztráció során",
+                    "Fejezze be az első utat és élvezze a 25 € kreditet!"
+                ],
+                footer: "Csak új GoCar ügyfeleknek • Autómegosztás Írországban • Dublin • Cork • Galway & több"
+            },
+            fi: {
+                title: "GoCar.ie Referral-koodi – Hanki 25 € krediitti",
+                header: `Hanki <span class="text-emerald-600">25 € krediitti</span> ensimmäiselle matkallesi`,
+                subtitle: "Käytä alla olevaa GoCar-referral-koodiani, niin molemmat saamme 25 € krediittiä, kun olet suorittanut ensimmäisen matkasi",
+                referralLabel: "Minun referral-koodini",
+                buttonText: "Kopioi koodi",
+                copiedText: "Kopioitu leikepöydälle!",
+                howtoTitle: "Kuinka lunastat 25 € krediittisi",
+                steps: [
+                    "Napauta kopioi-painiketta yläpuolella",
+                    `Siirry <a href="https://my.gocar.ie/signup.php" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">GoCar-rekisteröitymissivulle</a>`,
+                    "Liitä koodi rekisteröinnin aikana",
+                    "Suorita ensimmäinen matkasi ja nauti 25 € krediitistä!"
+                ],
+                footer: "Vain uusille GoCar-asiakkaille • Autonjakaminen Irlannissa • Dublin • Cork • Galway & enemmän"
+            },
+            bg: {
+                title: "Реферален код GoCar.ie – Получете 25 € кредит",
+                header: `Получете <span class="text-emerald-600">25 € кредит</span> на първото ви пътуване`,
+                subtitle: "Използвайте моя реферален код GoCar по-долу и двамата ще получим 25 € кредит след завършване на първото ви пътуване",
+                referralLabel: "Моят реферален код",
+                buttonText: "Копирай кода",
+                copiedText: "Копирано в клипборда!",
+                howtoTitle: "Как да осребрите вашия 25 € кредит",
+                steps: [
+                    "Натиснете бутона за копиране по-горе",
+                    `Отидете на <a href="https://my.gocar.ie/signup.php" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">страницата за регистрация GoCar</a>`,
+                    "Поставете кода по време на регистрация",
+                    "Завършете първото си пътуване и се насладете на 25 € кредит!"
+                ],
+                footer: "Валидно само за нови клиенти на GoCar • Споделяне на автомобили в Ирландия • Дъблин • Корк • Голуей и повече"
+            },
+            hr: {
+                title: "GoCar.ie Referalni kod – Dobijte 25 € kredita",
+                header: `Dobijte <span class="text-emerald-600">25 € kredita</span> na vaše prvo putovanje`,
+                subtitle: "Upotrijebite moj GoCar referalni kod ispod i oboje ćemo dobiti 25 € kredita nakon što završite svoje prvo putovanje",
+                referralLabel: "Moj referalni kod",
+                buttonText: "Kopiraj kod",
+                copiedText: "Kopirano u međuspremnik!",
+                howtoTitle: "Kako iskoristiti vaš 25 € kredit",
+                steps: [
+                    "Pritisnite gumb za kopiranje gore",
+                    `Idite na <a href="https://my.gocar.ie/signup.php" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">stranicu za registraciju GoCar</a>`,
+                    "Zalijepite kod tijekom registracije",
+                    "Završite svoje prvo putovanje i uživajte u 25 € kredita!"
+                ],
+                footer: "Važi samo za nove GoCar korisnike • Dijeljenje automobila u Irskoj • Dublin • Cork • Galway i više"
+            },
+            sk: {
+                title: "Referenčný kód GoCar.ie – Získajte 25 € kredit",
+                header: `Získajte <span class="text-emerald-600">25 € kredit</span> na vašu prvú cestu`,
+                subtitle: "Použite môj referenčný kód GoCar nižšie a obaja dostaneme 25 € kredit po dokončení vašej prvej cesty",
+                referralLabel: "Môj referenčný kód",
+                buttonText: "Kopírovať kód",
+                copiedText: "Skopírované do schránky!",
+                howtoTitle: "Ako uplatniť váš 25 € kredit",
+                steps: [
+                    "Kliknite na tlačidlo kopírovať vyššie",
+                    `Prejdite na <a href="https://my.gocar.ie/signup.php" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">registračnú stránku GoCar</a>`,
+                    "Vložte kód pri registrácii",
+                    "Dokončite prvú cestu a užite si 25 € kredit!"
+                ],
+                footer: "Platí iba pre nových zákazníkov GoCar • Zdielanie áut v Írsku • Dublin • Cork • Galway a ďalšie"
+            },
+            lt: {
+                title: "GoCar.ie Referencinis kodas – Gaukite 25 € kreditą",
+                header: `Gaukite <span class="text-emerald-600">25 € kreditą</span> savo pirmajai kelionei`,
+                subtitle: "Naudokite mano GoCar referencinį kodą žemiau ir abu gausime 25 € kreditą, kai baigsite pirmąją kelionę",
+                referralLabel: "Mano referencinis kodas",
+                buttonText: "Kopijuoti kodą",
+                copiedText: "Nukopijuota į iškarpinę!",
+                howtoTitle: "Kaip išnaudoti savo 25 € kreditą",
+                steps: [
+                    "Paspauskite kopijavimo mygtuką viršuje",
+                    `Eikite į <a href="https://my.gocar.ie/signup.php" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">GoCar registracijos puslapį</a>`,
+                    "Įklijuokite kodą registruodamiesi",
+                    "Baikite pirmąją kelionę ir mėgaukitės 25 € kreditu!"
+                ],
+                footer: "Galioja tik naujiems GoCar klientams • Automobilių dalijimasis Airijoje • Dublinas • Korkas • Golvejus ir daugiau"
+            },
+            lv: {
+                title: "GoCar.ie Referāla kods – Saņemiet 25 € kredītu",
+                header: `Saņemiet <span class="text-emerald-600">25 € kredītu</span> savam pirmajam braucienam`,
+                subtitle: "Izmantojiet manu GoCar referāla kodu zemāk un mēs abi saņemsim 25 € kredītu pēc pirmā brauciena pabeigšanas",
+                referralLabel: "Mans referāla kods",
+                buttonText: "Kopēt kodu",
+                copiedText: "Nokopēts starpliktuvē!",
+                howtoTitle: "Kā izmantot savu 25 € kredītu",
+                steps: [
+                    "Nospiediet kopēšanas pogu augšā",
+                    `Dodieties uz <a href="https://my.gocar.ie/signup.php" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">GoCar reģistrācijas lapu</a>`,
+                    "Ielīmējiet kodu reģistrācijas laikā",
+                    "Pabeidziet savu pirmo braucienu un izbaudiet 25 € kredītu!"
+                ],
+                footer: "Derīgs tikai jauniem GoCar klientiem • Automašīnu dalīšanās Īrijā • Dublina • Korkā • Golvejā un vairāk"
+            }
+        };
+
+        let currentLang = 'en';
+
+        // (The rest of the script is the same as the previous version – setLanguage, copyCode, buildLanguageSwitcher, detectLanguage, window.onload)
+        // I kept it exactly the same but expanded the supported languages and the switcher list.
+
+        function setLanguage(lang) {
+            if (!translations[lang]) return;
+            currentLang = lang;
+            
+            document.title = translations[lang].title;
+            document.getElementById('header').innerHTML = translations[lang].header;
+            document.getElementById('subtitle').innerHTML = translations[lang].subtitle;
+            document.getElementById('referral-label').textContent = translations[lang].referralLabel;
+            document.getElementById('button-text').textContent = translations[lang].buttonText;
+            document.getElementById('copied-text').textContent = translations[lang].copiedText;
+            document.getElementById('howto-title').innerHTML = `<i class="fa-solid fa-circle-info text-emerald-600"></i> ${translations[lang].howtoTitle}`;
+            
+            const stepsContainer = document.getElementById('steps');
+            stepsContainer.innerHTML = '';
+            translations[lang].steps.forEach((text, index) => {
+                const li = document.createElement('li');
+                li.className = "flex gap-4";
+                li.innerHTML = `<span class="font-mono bg-emerald-100 text-emerald-700 w-8 h-8 rounded-2xl flex items-center justify-center font-bold flex-shrink-0">${index + 1}</span>${text}`;
+                stepsContainer.appendChild(li);
+            });
+            
+            document.getElementById('footer').textContent = translations[lang].footer;
+            
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+        }
+
         function copyCode() {
             const codeElement = document.getElementById('code');
             const codeText = codeElement.textContent.trim();
@@ -88,18 +470,65 @@
             const feedback = document.getElementById('feedback');
 
             navigator.clipboard.writeText(codeText).then(() => {
-                const originalText = buttonText.innerHTML;
-                buttonText.innerHTML = `<i class="fa-solid fa-check"></i> Copied!`;
+                const original = buttonText.innerHTML;
+                buttonText.innerHTML = `<i class="fa-solid fa-check"></i>`;
                 feedback.classList.remove('hidden');
 
                 setTimeout(() => {
-                    buttonText.innerHTML = originalText;
+                    buttonText.innerHTML = original;
                     feedback.classList.add('hidden');
                 }, 2500);
             });
         }
 
-        tailwind.config = { content: [] };
+        function buildLanguageSwitcher() {
+            const container = document.getElementById('language-switcher');
+            const languages = [
+                { code: 'en', flag: '🇬🇧', name: 'EN' },
+                { code: 'fr', flag: '🇫🇷', name: 'FR' },
+                { code: 'de', flag: '🇩🇪', name: 'DE' },
+                { code: 'es', flag: '🇪🇸', name: 'ES' },
+                { code: 'nl', flag: '🇳🇱', name: 'NL' },
+                { code: 'it', flag: '🇮🇹', name: 'IT' },
+                { code: 'pl', flag: '🇵🇱', name: 'PL' },
+                { code: 'pt', flag: '🇵🇹', name: 'PT' },
+                { code: 'ru', flag: '🇷🇺', name: 'RU' },
+                { code: 'ro', flag: '🇷🇴', name: 'RO' },
+                { code: 'uk', flag: '🇺🇦', name: 'UA' },
+                { code: 'sv', flag: '🇸🇪', name: 'SV' },
+                { code: 'el', flag: '🇬🇷', name: 'EL' },
+                { code: 'cs', flag: '🇨🇿', name: 'CS' },
+                { code: 'hu', flag: '🇭🇺', name: 'HU' },
+                { code: 'fi', flag: '🇫🇮', name: 'FI' },
+                { code: 'bg', flag: '🇧🇬', name: 'BG' },
+                { code: 'hr', flag: '🇭🇷', name: 'HR' },
+                { code: 'sk', flag: '🇸🇰', name: 'SK' },
+                { code: 'lt', flag: '🇱🇹', name: 'LT' },
+                { code: 'lv', flag: '🇱🇻', name: 'LV' }
+            ];
+
+            languages.forEach(lang => {
+                const btn = document.createElement('button');
+                btn.className = `lang-btn flex items-center gap-1.5 px-4 py-2 rounded-2xl text-sm font-medium border border-gray-200 hover:border-emerald-300`;
+                btn.dataset.lang = lang.code;
+                btn.innerHTML = `${lang.flag} <span>${lang.name}</span>`;
+                btn.onclick = () => setLanguage(lang.code);
+                container.appendChild(btn);
+            });
+        }
+
+        function detectLanguage() {
+            const browserLang = navigator.language.split('-')[0];
+            const supported = ['en','fr','de','es','nl','it','pl','pt','ru','ro','uk','sv','el','cs','hu','fi','bg','hr','sk','lt','lv'];
+            return supported.includes(browserLang) ? browserLang : 'en';
+        }
+
+        window.onload = () => {
+            buildLanguageSwitcher();
+            const initialLang = detectLanguage();
+            setLanguage(initialLang);
+            tailwind.config = { content: [] };
+        };
     </script>
 </body>
 </html>
