@@ -136,18 +136,21 @@
         <div class="flex flex-wrap gap-2 justify-center mb-8 overflow-x-auto pb-2" id="language-switcher"></div>
 
         <!-- Header -->
-        <div class="text-center mb-8">
-            <div class="inline-flex items-center gap-2 bg-white shadow-sm border border-emerald-200 rounded-2xl px-5 py-2 mb-6">
-                <i class="fa-solid fa-car text-emerald-600"></i>
-                <span class="font-semibold text-emerald-700">GoCar.ie</span>
-            </div>
-            <h1 id="header" class="text-4xl md:text-5xl font-semibold text-gray-900">
-                Get <span class="text-emerald-600">€25 credit</span> on your first trip
-            </h1>
-            <p id="subtitle" class="mt-4 text-lg text-gray-600">
-                Use my GoCar referral code below and both of us get €25 credit once you complete your first trip
-            </p>
-        </div>
+<div class="text-center mb-8">
+    <!-- Prominent GoCar Logo -->
+    <div class="flex justify-center mb-6">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/GoCar_Logo.jpg" 
+             alt="GoCar Ireland Logo" 
+             class="h-20 md:h-28 w-auto">
+    </div>
+    
+    <h1 id="header" class="text-4xl md:text-5xl font-semibold text-gray-900">
+        Get <span class="text-emerald-600">€25 credit</span> on your first trip
+    </h1>
+    <p id="subtitle" class="mt-4 text-lg text-gray-600">
+        Use my GoCar referral code below and both of us get €25 credit once you complete your first trip
+    </p>
+</div>
 
         <!-- Big Referral Code Card -->
         <div class="bg-white rounded-3xl shadow-2xl border border-gray-100 p-8 md:p-12 text-center mb-8">
@@ -172,14 +175,23 @@
             </p>
         </div>
 
-        <!-- DIRECT SIGNUP BUTTON -->
-        <div class="text-center mb-8">
-            <a href="https://my.gocar.ie/signup.php?code=l19g03" target="_blank"
-               class="inline-flex items-center gap-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-10 py-5 rounded-3xl text-xl shadow-lg transition-all">
-                <i class="fa-solid fa-arrow-right"></i>
-                <span id="signup-text">Sign up and get €25</span>
-            </a>
-        </div>
+        <!-- DIRECT SIGNUP BUTTON with Logo -->
+<div class="text-center mb-8">
+    <a href="https://my.gocar.ie/signup.php?code=l19g03" target="_blank"
+       class="inline-flex items-center gap-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-10 py-5 rounded-3xl text-xl shadow-lg transition-all active:scale-95 group">
+        
+        <!-- GoCar Logo - Optimized for dark background -->
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/GoCar_Logo.jpg" 
+             alt="GoCar" 
+             class="h-8 w-auto drop-shadow-sm 
+                    brightness-110 contrast-125 saturate-150 
+                    [filter:drop-shadow(0_0_2px_rgb(255,255,255))]">
+        
+        <span id="signup-text">Sign up and get €25</span>
+        
+        <i class="fa-solid fa-arrow-right ml-1 transition-transform group-hover:translate-x-1"></i>
+    </a>
+</div>
 
         <!-- App Store Download Buttons -->
 <div class="text-center mb-8">
@@ -248,7 +260,7 @@
                 </li>
                 <li class="flex gap-4">
                     <span class="font-mono bg-emerald-100 text-emerald-700 w-8 h-8 rounded-2xl flex items-center justify-center font-bold flex-shrink-0">2</span>
-                    Go to <a href="https://my.gocar.ie/signup.php" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">GoCar signup page</a>
+                    Go to <a href="https://my.gocar.ie/signup.php?code=l19g03" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">GoCar signup page</a>
                 </li>
                 <li class="flex gap-4">
                     <span class="font-mono bg-emerald-100 text-emerald-700 w-8 h-8 rounded-2xl flex items-center justify-center font-bold flex-shrink-0">3</span>
@@ -305,7 +317,7 @@
                 howtoTitle: "How to redeem your €25 credit",
                 steps: [
                     "Tap the copy button above",
-                    `Go to <a href="https://my.gocar.ie/signup.php" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">GoCar signup page</a>`,
+                    `Go to <a href="https://my.gocar.ie/signup.php?code=l19g03" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">GoCar signup page</a>`,
                     "Paste the code during registration",
                     "Complete your first trip and enjoy €25 credit!"
                 ],
@@ -336,7 +348,7 @@
                 howtoTitle: "Comment utiliser votre crédit de 25 €",
                 steps: [
                     "Appuyez sur le bouton copier ci-dessus",
-                    `Allez sur la <a href="https://my.gocar.ie/signup.php" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">page d'inscription GoCar</a>`,
+                    `Allez sur la <a href="https://my.gocar.ie/signup.php?code=l19g03" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">page d'inscription GoCar</a>`,
                     "Collez le code lors de l'inscription",
                     "Effectuez votre premier trajet et profitez de 25 € de crédit !"
                 ],
@@ -367,7 +379,7 @@
                 howtoTitle: "So lösen Sie Ihr 25 € Guthaben ein",
                 steps: [
                     "Tippen Sie auf den Kopieren-Button oben",
-                    `Gehen Sie zur <a href="https://my.gocar.ie/signup.php" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">GoCar-Anmeldeseite</a>`,
+                    `Gehen Sie zur <a href="https://my.gocar.ie/signup.php?code=l19g03" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">GoCar-Anmeldeseite</a>`,
                     "Fügen Sie den Code bei der Registrierung ein",
                     "Schließen Sie Ihre erste Fahrt ab und genießen Sie 25 € Guthaben!"
                 ],
@@ -398,7 +410,7 @@
                 howtoTitle: "Cómo canjear tu crédito de 25 €",
                 steps: [
                     "Pulsa el botón de copiar arriba",
-                    `Ve a la <a href="https://my.gocar.ie/signup.php" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">página de registro de GoCar</a>`,
+                    `Ve a la <a href="https://my.gocar.ie/signup.php?code=l19g03" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">página de registro de GoCar</a>`,
                     "Pega el código durante el registro",
                     "Completa tu primer viaje y disfruta de 25 € de crédito!"
                 ],
@@ -429,7 +441,7 @@
                 howtoTitle: "Hoe je €25 tegoed kunt inwisselen",
                 steps: [
                     "Tik op de kopieerknop hierboven",
-                    `Ga naar de <a href="https://my.gocar.ie/signup.php" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">GoCar aanmeldingspagina</a>`,
+                    `Ga naar de <a href="https://my.gocar.ie/signup.php?code=l19g03" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">GoCar aanmeldingspagina</a>`,
                     "Plak de code bij de registratie",
                     "Maak je eerste rit af en geniet van €25 tegoed!"
                 ],
@@ -460,7 +472,7 @@
                 howtoTitle: "Come riscattare il tuo credito di €25",
                 steps: [
                     "Tocca il pulsante copia sopra",
-                    `Vai alla <a href="https://my.gocar.ie/signup.php" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">pagina di registrazione GoCar</a>`,
+                    `Vai alla <a href="https://my.gocar.ie/signup.php?code=l19g03" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">pagina di registrazione GoCar</a>`,
                     "Incolla il codice durante la registrazione",
                     "Completa il tuo primo viaggio e goditi €25 di credito!"
                 ],
@@ -491,7 +503,7 @@
                 howtoTitle: "Jak odebrać swój kredyt 25 €",
                 steps: [
                     "Kliknij przycisk kopiuj powyżej",
-                    `Przejdź do <a href="https://my.gocar.ie/signup.php" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">strony rejestracji GoCar</a>`,
+                    `Przejdź do <a href="https://my.gocar.ie/signup.php?code=l19g03" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">strony rejestracji GoCar</a>`,
                     "Wklej kod podczas rejestracji",
                     "Ukończ swoją pierwszą podróż i ciesz się kredytem 25 €!"
                 ],
@@ -522,7 +534,7 @@
                 howtoTitle: "Como resgatar o seu crédito de €25",
                 steps: [
                     "Toque no botão de copiar acima",
-                    `Vá para a <a href="https://my.gocar.ie/signup.php" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">página de inscrição GoCar</a>`,
+                    `Vá para a <a href="https://my.gocar.ie/signup.php?code=l19g03" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">página de inscrição GoCar</a>`,
                     "Cole o código durante o registo",
                     "Complete a sua primeira viagem e aproveite €25 de crédito!"
                 ],
@@ -553,7 +565,7 @@
                 howtoTitle: "Как активировать кредит 25 €",
                 steps: [
                     "Нажмите кнопку копирования выше",
-                    `Перейдите на <a href="https://my.gocar.ie/signup.php" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">страницу регистрации GoCar</a>`,
+                    `Перейдите на <a href="https://my.gocar.ie/signup.php?code=l19g03" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">страницу регистрации GoCar</a>`,
                     "Вставьте код при регистрации",
                     "Завершите первую поездку и получите 25 € кредита!"
                 ],
@@ -584,7 +596,7 @@
                 howtoTitle: "Cum să răscumpărați creditul de 25 €",
                 steps: [
                     "Apăsați butonul de copiere de mai sus",
-                    `Accesați <a href="https://my.gocar.ie/signup.php" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">pagina de înscriere GoCar</a>`,
+                    `Accesați <a href="https://my.gocar.ie/signup.php?code=l19g03" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">pagina de înscriere GoCar</a>`,
                     "Lipiti codul în timpul înregistrării",
                     "Finalizați prima călătorie și bucurați-vă de 25 € credit!"
                 ],
@@ -615,7 +627,7 @@
                 howtoTitle: "Як активувати кредит 25 €",
                 steps: [
                     "Натисніть кнопку копіювання вище",
-                    `Перейдіть на <a href="https://my.gocar.ie/signup.php" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">сторінку реєстрації GoCar</a>`,
+                    `Перейдіть на <a href="https://my.gocar.ie/signup.php?code=l19g03" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">сторінку реєстрації GoCar</a>`,
                     "Вставте код під час реєстрації",
                     "Завершіть першу поїздку та отримайте 25 € кредиту!"
                 ],
@@ -646,7 +658,7 @@
                 howtoTitle: "Hur du löser in din 25 € kredit",
                 steps: [
                     "Tryck på kopieraknappen ovan",
-                    `Gå till <a href="https://my.gocar.ie/signup.php" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">GoCar-registreringssidan</a>`,
+                    `Gå till <a href="https://my.gocar.ie/signup.php?code=l19g03" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">GoCar-registreringssidan</a>`,
                     "Klistra in koden vid registrering",
                     "Slutför din första resa och njut av 25 € kredit!"
                 ],
@@ -677,7 +689,7 @@
                 howtoTitle: "Πώς να εξαργυρώσετε την πίστωση 25 €",
                 steps: [
                     "Πατήστε το κουμπί αντιγραφής παραπάνω",
-                    `Μεταβείτε στη <a href="https://my.gocar.ie/signup.php" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">σελίδα εγγραφής GoCar</a>`,
+                    `Μεταβείτε στη <a href="https://my.gocar.ie/signup.php?code=l19g03" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">σελίδα εγγραφής GoCar</a>`,
                     "Επικολλήστε τον κωδικό κατά την εγγραφή",
                     "Ολοκληρώστε το πρώτο σας ταξίδι και απολαύστε 25 € πίστωση!"
                 ],
@@ -708,7 +720,7 @@
                 howtoTitle: "Jak uplatnit váš kredit 25 €",
                 steps: [
                     "Klepněte na tlačítko kopírovat výše",
-                    `Přejděte na <a href="https://my.gocar.ie/signup.php" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">registrační stránku GoCar</a>`,
+                    `Přejděte na <a href="https://my.gocar.ie/signup.php?code=l19g03" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">registrační stránku GoCar</a>`,
                     "Vložte kód při registraci",
                     "Dokončete první cestu a užijte si 25 € kredit!"
                 ],
@@ -739,7 +751,7 @@
                 howtoTitle: "Hogyan váltsa be a 25 € kreditjét",
                 steps: [
                     "Koppintson a másolás gombra fent",
-                    `Menjen a <a href="https://my.gocar.ie/signup.php" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">GoCar regisztrációs oldalára</a>`,
+                    `Menjen a <a href="https://my.gocar.ie/signup.php?code=l19g03" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">GoCar regisztrációs oldalára</a>`,
                     "Illessze be a kódot a regisztráció során",
                     "Fejezze be az első utat és élvezze a 25 € kreditet!"
                 ],
@@ -770,7 +782,7 @@
                 howtoTitle: "Kuinka lunastat 25 € krediittisi",
                 steps: [
                     "Napauta kopioi-painiketta yläpuolella",
-                    `Siirry <a href="https://my.gocar.ie/signup.php" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">GoCar-rekisteröitymissivulle</a>`,
+                    `Siirry <a href="https://my.gocar.ie/signup.php?code=l19g03" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">GoCar-rekisteröitymissivulle</a>`,
                     "Liitä koodi rekisteröinnin aikana",
                     "Suorita ensimmäinen matkasi ja nauti 25 € krediitistä!"
                 ],
@@ -801,7 +813,7 @@
                 howtoTitle: "Как да осребрите вашия 25 € кредит",
                 steps: [
                     "Натиснете бутона за копиране по-горе",
-                    `Отидете на <a href="https://my.gocar.ie/signup.php" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">страницата за регистрация GoCar</a>`,
+                    `Отидете на <a href="https://my.gocar.ie/signup.php?code=l19g03" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">страницата за регистрация GoCar</a>`,
                     "Поставете кода по време на регистрация",
                     "Завършете първото си пътуване и се насладете на 25 € кредит!"
                 ],
@@ -832,7 +844,7 @@
                 howtoTitle: "Kako iskoristiti vaš 25 € kredit",
                 steps: [
                     "Pritisnite gumb za kopiranje gore",
-                    `Idite na <a href="https://my.gocar.ie/signup.php" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">stranicu za registraciju GoCar</a>`,
+                    `Idite na <a href="https://my.gocar.ie/signup.php?code=l19g03" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">stranicu za registraciju GoCar</a>`,
                     "Zalijepite kod tijekom registracije",
                     "Završite svoje prvo putovanje i uživajte u 25 € kredita!"
                 ],
@@ -863,7 +875,7 @@
                 howtoTitle: "Ako uplatniť váš 25 € kredit",
                 steps: [
                     "Kliknite na tlačidlo kopírovať vyššie",
-                    `Prejdite na <a href="https://my.gocar.ie/signup.php" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">registračnú stránku GoCar</a>`,
+                    `Prejdite na <a href="https://my.gocar.ie/signup.php?code=l19g03" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">registračnú stránku GoCar</a>`,
                     "Vložte kód pri registrácii",
                     "Dokončite prvú cestu a užite si 25 € kredit!"
                 ],
@@ -894,7 +906,7 @@
                 howtoTitle: "Kaip išnaudoti savo 25 € kreditą",
                 steps: [
                     "Paspauskite kopijavimo mygtuką viršuje",
-                    `Eikite į <a href="https://my.gocar.ie/signup.php" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">GoCar registracijos puslapį</a>`,
+                    `Eikite į <a href="https://my.gocar.ie/signup.php?code=l19g03" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">GoCar registracijos puslapį</a>`,
                     "Įklijuokite kodą registruodamiesi",
                     "Baikite pirmąją kelionę ir mėgaukitės 25 € kreditu!"
                 ],
@@ -925,7 +937,7 @@
                 howtoTitle: "Kā izmantot savu 25 € kredītu",
                 steps: [
                     "Nospiediet kopēšanas pogu augšā",
-                    `Dodieties uz <a href="https://my.gocar.ie/signup.php" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">GoCar reģistrācijas lapu</a>`,
+                    `Dodieties uz <a href="https://my.gocar.ie/signup.php?code=l19g03" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">GoCar reģistrācijas lapu</a>`,
                     "Ielīmējiet kodu reģistrācijas laikā",
                     "Pabeidziet savu pirmo braucienu un izbaudiet 25 € kredītu!"
                 ],
