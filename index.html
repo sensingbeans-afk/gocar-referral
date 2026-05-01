@@ -34,6 +34,73 @@
     <!-- Google Search Console -->
     <meta name="google-site-verification" content="X_7SIJAr3pFfdxWUv0tu3dbUbNdqTug98o_OycZWpEE" />
 
+    <!-- === NEW: JSON-LD STRUCTURED DATA FOR SEO (application/ld+json) === -->
+    <!-- This helps Google understand the page as a GoCar referral + car-sharing service -->
+    <!-- It boosts visibility for searches like "gocar", "gocar referral code", "gocar ireland", "car sharing dublin", "car rental ireland" etc. -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "GoCar.ie Referral Code l19g03 – Get €25 Free Credit Ireland",
+      "description": "Use GoCar.ie referral code l19g03 to get €25 credit on your first trip. Ireland's #1 car sharing service in Dublin, Cork, Galway, Limerick & more. New users only.",
+      "url": "https://sensingbeans-afk.github.io/gocar-referral/",
+      "inLanguage": "en",
+      "about": {
+        "@type": "Service",
+        "name": "GoCar Car Sharing & Rental",
+        "serviceType": "Car Sharing, Car Rental",
+        "description": "GoCar is Ireland's largest car and van sharing service. Rent vehicles by the hour or day nationwide.",
+        "provider": {
+          "@type": "Organization",
+          "name": "GoCar",
+          "alternateName": "GoCar.ie",
+          "url": "https://www.gocar.ie/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.gocar.ie/favicon.ico"
+          },
+          "description": "Ireland's #1 Car Sharing Company",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Dublin",
+            "addressCountry": "IE"
+          },
+          "areaServed": {
+            "@type": "Country",
+            "name": "Ireland"
+          },
+          "sameAs": [
+            "https://www.gocar.ie/",
+            "https://www.instagram.com/gocar_ireland/",
+            "https://www.facebook.com/GoCarIreland"
+          ]
+        },
+        "areaServed": "Ireland",
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "GoCar Referral Offer",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "name": "€25 Free Credit with Referral Code l19g03",
+              "description": "New GoCar users get €25 credit on their first completed trip when signing up with referral code l19g03. Both referrer and new user benefit.",
+              "url": "https://my.gocar.ie/signup.php?code=l19g03",
+              "price": "0",
+              "priceCurrency": "EUR",
+              "eligibleRegion": {
+                "@type": "Country",
+                "name": "IE"
+              },
+              "validFrom": "2025-01-01",
+              "validThrough": "2027-12-31"
+            }
+          ]
+        }
+      }
+    }
+    </script>
+    <!-- === END JSON-LD === -->
+
     <!-- Styles + Icons -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
