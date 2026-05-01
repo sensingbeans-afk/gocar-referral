@@ -37,10 +37,10 @@
     <!-- Styles + Icons -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
         body { font-family: 'Inter', system-ui, sans-serif; }
         
         .code-font {
@@ -74,13 +74,19 @@
                 <i class="fa-solid fa-car text-emerald-600"></i>
                 <span class="font-semibold text-emerald-700">GoCar.ie</span>
             </div>
-            <h1 id="header" class="text-4xl md:text-5xl font-semibold text-gray-900"></h1>
-            <p id="subtitle" class="mt-4 text-lg text-gray-600"></p>
+            <h1 id="header" class="text-4xl md:text-5xl font-semibold text-gray-900">
+                Get <span class="text-emerald-600">€25 credit</span> on your first trip
+            </h1>
+            <p id="subtitle" class="mt-4 text-lg text-gray-600">
+                Use my GoCar referral code below and both of us get €25 credit once you complete your first trip
+            </p>
         </div>
 
         <!-- Big Referral Code Card -->
         <div class="bg-white rounded-3xl shadow-2xl border border-gray-100 p-8 md:p-12 text-center mb-8">
-            <p id="referral-label" class="text-emerald-600 font-medium tracking-widest text-sm uppercase mb-4"></p>
+            <p id="referral-label" class="text-emerald-600 font-medium tracking-widest text-sm uppercase mb-4">
+                My Referral Code
+            </p>
             
             <div class="flex items-center justify-center gap-6 flex-wrap">
                 <div id="code" class="code-font text-6xl md:text-7xl font-bold text-gray-800 tracking-widest select-all">
@@ -90,12 +96,12 @@
                 <button onclick="copyCode()" 
                         class="flex items-center justify-center gap-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-8 py-4 rounded-2xl text-lg transition-all active:scale-95">
                     <i class="fa-solid fa-copy"></i>
-                    <span id="button-text"></span>
+                    <span id="button-text">Copy code</span>
                 </button>
             </div>
 
             <p id="feedback" class="mt-6 text-emerald-600 font-medium hidden flex items-center justify-center gap-2">
-                <i class="fa-solid fa-check-circle"></i> <span id="copied-text"></span>
+                <i class="fa-solid fa-check-circle"></i> <span id="copied-text">Copied to clipboard!</span>
             </p>
         </div>
 
@@ -104,28 +110,30 @@
             <a href="https://my.gocar.ie/signup.php?code=l19g03" target="_blank"
                class="inline-flex items-center gap-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-10 py-5 rounded-3xl text-xl shadow-lg transition-all">
                 <i class="fa-solid fa-arrow-right"></i>
-                <span id="signup-text"></span>
+                <span id="signup-text">Sign up and get €25</span>
             </a>
         </div>
 
-        <!-- NEW SEO CONTENT: Benefits -->
+        <!-- Benefits -->
         <div class="bg-white rounded-3xl p-8 border mb-8">
-            <h2 id="benefits-title" class="font-semibold text-2xl mb-6 text-center"></h2>
+            <h2 id="benefits-title" class="font-semibold text-2xl mb-6 text-center">
+                Why use GoCar.ie with my referral code?
+            </h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
                 <div>
                     <i class="fa-solid fa-euro-sign text-4xl text-emerald-600 mb-3"></i>
-                    <p id="benefit1-title" class="font-medium"></p>
-                    <p id="benefit1-desc" class="text-sm text-gray-600"></p>
+                    <p id="benefit1-title" class="font-medium">€25 free credit</p>
+                    <p id="benefit1-desc" class="text-sm text-gray-600">For you + me on your first trip</p>
                 </div>
                 <div>
                     <i class="fa-solid fa-car text-4xl text-emerald-600 mb-3"></i>
-                    <p id="benefit2-title" class="font-medium"></p>
-                    <p id="benefit2-desc" class="text-sm text-gray-600"></p>
+                    <p id="benefit2-title" class="font-medium">Cars everywhere</p>
+                    <p id="benefit2-desc" class="text-sm text-gray-600">Dublin • Cork • Galway • Limerick & more</p>
                 </div>
                 <div>
                     <i class="fa-solid fa-clock text-4xl text-emerald-600 mb-3"></i>
-                    <p id="benefit3-title" class="font-medium"></p>
-                    <p id="benefit3-desc" class="text-sm text-gray-600"></p>
+                    <p id="benefit3-title" class="font-medium">Flexible booking</p>
+                    <p id="benefit3-desc" class="text-sm text-gray-600">30 minutes to days – no ownership hassle</p>
                 </div>
             </div>
         </div>
@@ -133,19 +141,58 @@
         <!-- How to use -->
         <div class="bg-white rounded-3xl p-8 border mb-8">
             <h2 id="howto-title" class="font-semibold text-xl mb-6 flex items-center gap-3">
-                <i class="fa-solid fa-circle-info text-emerald-600"></i>
+                <i class="fa-solid fa-circle-info text-emerald-600"></i> 
+                How to redeem your €25 credit
             </h2>
-            <ol id="steps" class="space-y-6"></ol>
+            <ol id="steps" class="space-y-6">
+                <li class="flex gap-4">
+                    <span class="font-mono bg-emerald-100 text-emerald-700 w-8 h-8 rounded-2xl flex items-center justify-center font-bold flex-shrink-0">1</span>
+                    Tap the copy button above
+                </li>
+                <li class="flex gap-4">
+                    <span class="font-mono bg-emerald-100 text-emerald-700 w-8 h-8 rounded-2xl flex items-center justify-center font-bold flex-shrink-0">2</span>
+                    Go to <a href="https://my.gocar.ie/signup.php" target="_blank" class="text-emerald-600 underline hover:text-emerald-700">GoCar signup page</a>
+                </li>
+                <li class="flex gap-4">
+                    <span class="font-mono bg-emerald-100 text-emerald-700 w-8 h-8 rounded-2xl flex items-center justify-center font-bold flex-shrink-0">3</span>
+                    Paste the code during registration
+                </li>
+                <li class="flex gap-4">
+                    <span class="font-mono bg-emerald-100 text-emerald-700 w-8 h-8 rounded-2xl flex items-center justify-center font-bold flex-shrink-0">4</span>
+                    Complete your first trip and enjoy €25 credit!
+                </li>
+            </ol>
         </div>
 
-        <!-- NEW SEO CONTENT: FAQ -->
+        <!-- FAQ -->
         <div class="bg-white rounded-3xl p-8 border mb-8">
-            <h2 id="faq-title" class="font-semibold text-2xl mb-6"></h2>
-            <div id="faq-container" class="space-y-6"></div>
+            <h2 id="faq-title" class="font-semibold text-2xl mb-6">
+                Frequently Asked Questions
+            </h2>
+            <div id="faq-container" class="space-y-6">
+                <details class="group border border-gray-200 rounded-2xl p-4 hover:border-emerald-200">
+                    <summary class="flex justify-between items-center cursor-pointer font-medium text-gray-800">What is the GoCar referral code?</summary>
+                    <p class="text-gray-600 mt-3 leading-relaxed">My referral code is <strong>l19g03</strong>. New users get €25 credit when they sign up and complete their first trip.</p>
+                </details>
+                <details class="group border border-gray-200 rounded-2xl p-4 hover:border-emerald-200">
+                    <summary class="flex justify-between items-center cursor-pointer font-medium text-gray-800">Is GoCar available in Dublin?</summary>
+                    <p class="text-gray-600 mt-3 leading-relaxed">Yes! GoCar is Ireland’s largest car-sharing service with cars in Dublin, Cork, Galway, Limerick and many more cities.</p>
+                </details>
+                <details class="group border border-gray-200 rounded-2xl p-4 hover:border-emerald-200">
+                    <summary class="flex justify-between items-center cursor-pointer font-medium text-gray-800">How much is the €25 credit worth?</summary>
+                    <p class="text-gray-600 mt-3 leading-relaxed">It’s a full €25 off your first booking. Perfect for your first hour or day rental.</p>
+                </details>
+                <details class="group border border-gray-200 rounded-2xl p-4 hover:border-emerald-200">
+                    <summary class="flex justify-between items-center cursor-pointer font-medium text-gray-800">Can I use the code more than once?</summary>
+                    <p class="text-gray-600 mt-3 leading-relaxed">No – the referral code is for new GoCar customers only (one-time use per account).</p>
+                </details>
+            </div>
         </div>
 
         <!-- Footer -->
-        <div id="footer" class="text-center text-xs text-gray-400 mt-10"></div>
+        <div id="footer" class="text-center text-xs text-gray-400 mt-10">
+            Valid for new GoCar customers only • Ireland car sharing • Dublin • Cork • Galway & more
+        </div>
     </div>
 
     <script>
@@ -810,7 +857,6 @@
             if (!translations[lang]) return;
             currentLang = lang;
             
-            // Original translations
             document.title = translations[lang].title;
             document.getElementById('header').innerHTML = translations[lang].header;
             document.getElementById('subtitle').innerHTML = translations[lang].subtitle;
@@ -818,19 +864,6 @@
             document.getElementById('button-text').textContent = translations[lang].buttonText;
             document.getElementById('copied-text').textContent = translations[lang].copiedText;
             document.getElementById('howto-title').innerHTML = `<i class="fa-solid fa-circle-info text-emerald-600"></i> ${translations[lang].howtoTitle}`;
-            
-            const stepsContainer = document.getElementById('steps');
-            stepsContainer.innerHTML = '';
-            translations[lang].steps.forEach((text, index) => {
-                const li = document.createElement('li');
-                li.className = "flex gap-4";
-                li.innerHTML = `<span class="font-mono bg-emerald-100 text-emerald-700 w-8 h-8 rounded-2xl flex items-center justify-center font-bold flex-shrink-0">${index + 1}</span>${text}`;
-                stepsContainer.appendChild(li);
-            });
-            
-            document.getElementById('footer').textContent = translations[lang].footer;
-
-            // === NEW LOCALIZED SECTIONS ===
             document.getElementById('signup-text').textContent = translations[lang].signupText;
             document.getElementById('benefits-title').textContent = translations[lang].benefitsTitle;
             document.getElementById('benefit1-title').textContent = translations[lang].benefit1Title;
@@ -840,8 +873,19 @@
             document.getElementById('benefit3-title').textContent = translations[lang].benefit3Title;
             document.getElementById('benefit3-desc').textContent = translations[lang].benefit3Desc;
             document.getElementById('faq-title').textContent = translations[lang].faqTitle;
+            document.getElementById('footer').textContent = translations[lang].footer;
 
-            // Populate FAQ dynamically
+            // Steps
+            const stepsContainer = document.getElementById('steps');
+            stepsContainer.innerHTML = '';
+            translations[lang].steps.forEach((text, index) => {
+                const li = document.createElement('li');
+                li.className = "flex gap-4";
+                li.innerHTML = `<span class="font-mono bg-emerald-100 text-emerald-700 w-8 h-8 rounded-2xl flex items-center justify-center font-bold flex-shrink-0">${index + 1}</span>${text}`;
+                stepsContainer.appendChild(li);
+            });
+
+            // FAQs
             const faqContainer = document.getElementById('faq-container');
             faqContainer.innerHTML = '';
             translations[lang].faqs.forEach(faq => {
@@ -853,8 +897,8 @@
                 `;
                 faqContainer.appendChild(details);
             });
-            
-            // Update active language button
+
+            // Update active button
             document.querySelectorAll('.lang-btn').forEach(btn => {
                 btn.classList.toggle('active', btn.dataset.lang === lang);
             });
@@ -924,7 +968,6 @@
             buildLanguageSwitcher();
             const initialLang = detectLanguage();
             setLanguage(initialLang);
-            tailwind.config = { content: [] };
         };
     </script>
 </body>
