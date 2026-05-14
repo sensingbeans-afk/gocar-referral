@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Not really necessary , but could help for AI may be ?
+User-agent: GPTBot
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
